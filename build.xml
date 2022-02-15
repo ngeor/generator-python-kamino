@@ -1,0 +1,13 @@
+<project name="generator-python-kamino" basedir=".">
+  <target name="format">
+    <exec executable="node">
+      <arg line="node_modules/eslint/bin/eslint.js --fix ." />
+    </exec>
+  </target>
+
+  <target name="changelog">
+    <exec executable="git-cliff">
+      <arg line="--include-path 'generator-python-kamino/*' -w .. -o CHANGELOG.md" />
+    </exec>
+  </target>
+</project>
