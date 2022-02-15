@@ -18,13 +18,13 @@ npm link
 Use the generator with:
 
 ```bash
-yo python-kamino
+yo @ngeor/python-kamino
 ```
 
 Uninstall with:
 
 ```bash
-npm rm --global generator-python-kamino
+npm rm --global @ngeor/generator-python-kamino
 ```
 
 ## License
