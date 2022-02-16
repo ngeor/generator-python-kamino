@@ -7,7 +7,7 @@
 
   <target name="changelog">
     <exec executable="git-cliff">
-      <arg line="--include-path '${ant.project.name}/*' -w .. -o CHANGELOG.md" />
+      <arg line="--include-path '${ant.project.name}/*' -r .. -o CHANGELOG.md" />
     </exec>
   </target>
 
