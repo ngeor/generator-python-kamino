@@ -7,7 +7,25 @@
 
   <target name="changelog">
     <exec executable="git-cliff">
-      <arg line="--include-path 'generator-python-kamino/*' -w .. -o CHANGELOG.md" />
+      <arg line="--include-path '${ant.project.name}/*' -w .. -o CHANGELOG.md" />
     </exec>
+  </target>
+
+  <target name="link" depends="detect-npm">
+    <exec executable="${npm}">
+      <arg line="link" />
+    </exec>
+  </target>
+
+  <target name="unlink" depends="detect-npm">
+    <exec executable="${npm}">
+      <arg line="rm --global @ngeor/${ant.project.name}" />
+    </exec>
+  </target>
+
+  <target name="detect-npm">
+    <condition property="npm" value="npm.cmd" else="npm">
+      <os family="windows" />
+    </condition>
   </target>
 </project>

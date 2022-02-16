@@ -14,12 +14,24 @@ module.exports = class extends Generator {
       )
     );
 
+    // see https://github.com/SBoudrias/Inquirer.js#objects
     const prompts = [
       {
+        type: "input",
+        name: "name",
+        message: "Your project name",
+        default: this.appname // Default to current folder name
+      },
+      {
+        type: "input",
+        name: "description",
+        message: "Your project description",
+      },
+      {
         type: "confirm",
-        name: "someAnswer",
-        message: "Would you like to enable this option?",
-        default: true
+        name: "runPipEnv",
+        message: "Would you like to install the pipenv?",
+        default: false
       }
     ];
 
@@ -31,10 +43,34 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copy(
-      this.templatePath("dummyfile.txt"),
-      this.destinationPath("dummyfile.txt")
+      this.templatePath("Pipfile"),
+      this.destinationPath("Pipfile")
+    );
+    this.fs.copy(
+      this.templatePath("pyproject.toml"),
+      this.destinationPath("pyproject.toml")
+    );
+    this.fs.copyTpl(
+      this.templatePath("setup.cfg"),
+      this.destinationPath("setup.cfg"),
+      {
+        name: this.props.name,
+        description: this.props.description
+      }
+    );
+    this.fs.copy(
+      this.templatePath("__init__.py"),
+      this.destinationPath(this.props.name + "/" + "__init__.py")
+    );
+    this.fs.copy(
+      this.templatePath("main.py"),
+      this.destinationPath(this.props.name + "/" + "main.py")
     );
   }
 
-  install() {}
+  install() {
+    if (this.props.runPipEnv) {
+      this.spawnCommand("pipenv", ["install", "--dev"]);
+    }
+  }
 };
