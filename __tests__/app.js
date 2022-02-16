@@ -11,6 +11,6 @@ describe("generator-python-kamino:app", () => {
   });
 
   it("creates files", () => {
-    assert.file(["dummyfile.txt"]);
+    assert.file(["Pipfile"]);
   });
 });

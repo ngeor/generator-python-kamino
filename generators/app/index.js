@@ -14,7 +14,7 @@ module.exports = class extends Generator {
       )
     );
 
-    // see https://github.com/SBoudrias/Inquirer.js#objects
+    // See https://github.com/SBoudrias/Inquirer.js#objects
     const prompts = [
       {
         type: "input",
@@ -25,7 +25,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "description",
-        message: "Your project description",
+        message: "Your project description"
       },
       {
         type: "confirm",
@@ -42,10 +42,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath("Pipfile"),
-      this.destinationPath("Pipfile")
-    );
+    this.fs.copy(this.templatePath("Pipfile"), this.destinationPath("Pipfile"));
     this.fs.copy(
       this.templatePath("pyproject.toml"),
       this.destinationPath("pyproject.toml")
@@ -60,11 +57,11 @@ module.exports = class extends Generator {
     );
     this.fs.copy(
       this.templatePath("__init__.py"),
-      this.destinationPath(this.props.name + "/" + "__init__.py")
+      this.destinationPath(this.props.name + "/__init__.py")
     );
     this.fs.copy(
       this.templatePath("main.py"),
-      this.destinationPath(this.props.name + "/" + "main.py")
+      this.destinationPath(this.props.name + "/main.py")
     );
   }
 
