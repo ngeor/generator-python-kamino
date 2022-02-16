@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.\n
 # https://tera.netlify.app/docs/#introduction
 body = """
 {% if version %}\
-    ## [{{ version | trim_start_matches(pat="v") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
+    ## [{{ version | trim_start_matches(pat="generator-python-kamino/") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
 {% else %}\
     ## [unreleased]
 {% endif %}\
@@ -49,7 +49,7 @@ commit_parsers = [
 # filter out the commits that are not matched by commit parsers
 filter_commits = false
 # glob pattern for matching git tags
-tag_pattern = "generator-python-kamino/v[0-9]*"
+tag_pattern = "generator-python-kamino/[0-9]*"
 # regex for skipping tags
 skip_tags = "v0.1.0-beta.1"
 # regex for ignoring tags
