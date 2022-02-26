@@ -20,22 +20,22 @@ module.exports = class extends Generator {
         type: "input",
         name: "name",
         message: "Your project name",
-        default: this.appname // Default to current folder name
+        default: this.appname, // Default to current folder name
       },
       {
         type: "input",
         name: "description",
-        message: "Your project description"
+        message: "Your project description",
       },
       {
         type: "confirm",
         name: "runPipEnv",
         message: "Would you like to install the pipenv?",
-        default: false
-      }
+        default: false,
+      },
     ];
 
-    return this.prompt(prompts).then(props => {
+    return this.prompt(prompts).then((props) => {
       // To access props later use this.props.someAnswer;
       this.props = props;
     });
@@ -52,7 +52,7 @@ module.exports = class extends Generator {
       this.destinationPath("setup.cfg"),
       {
         name: this.props.name,
-        description: this.props.description
+        description: this.props.description,
       }
     );
     this.fs.copy(
