@@ -1,18 +1,11 @@
 "use strict";
 const Generator = require("yeoman-generator");
-const chalk = require("chalk");
 const yosay = require("yosay");
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(
-        `Welcome to the smashing ${chalk.red(
-          "generator-python-kamino"
-        )} generator!`
-      )
-    );
+    this.log(yosay("Welcome to the kamino python generator!"));
 
     // See https://github.com/SBoudrias/Inquirer.js#objects
     const prompts = [
