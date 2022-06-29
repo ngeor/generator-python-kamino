@@ -1,6 +1,6 @@
 {
   "name": "@ngeor/generator-python-kamino",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Create a Python project for the kamino repo",
   "homepage": "https://github.com/ngeor/kamino",
   "author": {
