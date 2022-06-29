@@ -1,0 +1,22 @@
+name: Publish generator-python-kamino
+
+on:
+  push:
+    tags: [ "v*" ]
+
+jobs:
+  generator-python-kamino-publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v2
+    - name: Set up nodeJS
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'npm'
+    - run: npm install
+    - run: npm run test
+    - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.KAMINO_NPM_TOKEN }}" > ~/.npmrc
+    - run: npm whoami
+    - run: npm publish --access=public
